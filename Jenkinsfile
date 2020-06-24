@@ -1,13 +1,10 @@
-node{
-   def mvnHome
-   stage('Preparation'){
-       git 'https://github.com/canindit75/JenkinsDemo.git'
-       mvnHome = tool 'M3'
+  
+podTemplate(label: BUILD_TAG, containers: [containerTemplate(name: 'maven', image: 'maven', command: 'sleep', args: 'infinity')]) {
+  node(BUILD_TAG) {
+    checkout scm
+    container('maven') {
+      sh 'mvn -B -ntp -Dmaven.test.failure.ignore verify'
     }
-   stage('Build'){
-      withEnv(['%MAVEN_HOME%=$mvnHome']){
-           bat(/"%MAVEN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean package 
-pause/)
-      }
-   }
+    junit '**/target/surefire-reports/TEST-*.xml'
+  }
 }
