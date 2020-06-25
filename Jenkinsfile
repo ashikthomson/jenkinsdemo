@@ -8,7 +8,7 @@ node{
    
    }
    stage('Install'){
-   sh 'mvn build'
+   sh 'mvn package'
    
    }
 }
