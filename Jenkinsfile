@@ -3,8 +3,12 @@ node{
    git 'https://github.com/ashikthomson/jenkinsdemo'
    }
    
-   stage('Compile-package'){
-   sh 'mvn compile'
+   stage('Clean'){
+   sh 'mvn clean'
+   
+   }
+   stage('Install'){
+   sh 'mvn install'
    
    }
 }
