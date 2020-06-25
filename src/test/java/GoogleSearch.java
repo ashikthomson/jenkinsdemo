@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.annotations.Test;
 public class GoogleSearch {
 	@Test
@@ -13,8 +14,10 @@ public class GoogleSearch {
 		System.setProperty("webdriver.gecko.driver", "/home/ubuntu/Downloads/geckodriver");
 		//before launching the chromebrowser - we need to point to the
 		//path of chromdriver executable
+		FirefoxOptions options = new FirefoxOptions();
+		options.setHeadless(true);
 		WebDriver driver;
-		driver = new FirefoxDriver(); //launching browser
+		driver = new FirefoxOptions(); //launching browser
 		driver.get("http://www.google.com"); //navigating to app url
 		Thread.sleep(3000); //pause for 3 sec
 		WebElement GoogleSearch = driver.findElement(By.name("q"));
