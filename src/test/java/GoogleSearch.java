@@ -11,13 +11,11 @@ public class GoogleSearch {
 	public void GoogleSearch() throws InterruptedException {
 		//for launching browser - create an instance of ChromeDriver class
 		//Ctrl + Shift + O
-		System.setProperty("webdriver.gecko.driver", "/home/ubuntu/Downloads/geckodriver");
+		System.setProperty("webdriver.gecko.driver", "geckodriver");
 		//before launching the chromebrowser - we need to point to the
-		//path of chromdriver executable
-		FirefoxOptions options = new FirefoxOptions();
-		options.setHeadless(true);
+		//path of chromdriver executables
 		WebDriver driver;
-		driver = new FirefoxOptions(); //launching browser
+		driver = new FirefoxDriver(); //launching browser
 		driver.get("http://www.google.com"); //navigating to app url
 		Thread.sleep(3000); //pause for 3 sec
 		WebElement GoogleSearch = driver.findElement(By.name("q"));
